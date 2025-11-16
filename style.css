@@ -1,0 +1,162 @@
+/* 1. DEFINE COLOR VARIABLES (Default Light Theme) */
+:root {
+    --color-bg-page: #f4f4f4;
+    --color-bg-container: #ffffff;
+    --color-text-primary: #333333;
+    --color-text-secondary: #555555;
+    --color-shadow: rgba(0, 0, 0, 0.08);
+
+    /* Brand Gradient & Button */
+    --color-blue-start: #1E3A8A;
+    --color-teal-end: #14B8A6;
+    --color-button-text: #ffffff;
+}
+
+/* 2. APPLY VARIABLES TO STYLES */
+
+/* Base Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--color-bg-page);
+    color: var(--color-text-primary);
+    text-align: center;
+    line-height: 1.6;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 600px;
+    padding: 40px;
+    background-color: var(--color-bg-container);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px var(--color-shadow);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Logo Styling */
+.logo {
+    font-size: 3.5em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--color-text-primary);
+}
+
+/* Gradient on ampersand */
+.logo .ampersand {
+    background: linear-gradient(45deg, var(--color-blue-start), var(--color-teal-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    margin: 0 5px;
+}
+
+/* Tagline & Description */
+.tagline {
+    font-size: 1.6em;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 1.1em;
+    color: var(--color-text-secondary);
+    margin-bottom: 30px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Contact Button */
+.contact-button {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--color-blue-start), var(--color-teal-end));
+    color: var(--color-button-text);
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 30px;
+}
+
+.contact-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Social Links Styling (UPDATED FOR SVGS) */
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: var(--color-text-secondary); /* This color will be inherited */
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.social-links a:hover {
+    color: var(--color-text-primary); /* This will be inherited on hover */
+    transform: translateY(-2px);
+}
+
+.social-links a svg {
+    width: 32px;
+    height: 32px;
+    fill: currentColor; /* This makes the SVG inherit its color from the <a> tag */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        padding: 25px;
+    }
+    .logo {
+        font-size: 2.8em;
+    }
+    .tagline {
+        font-size: 1.3em;
+    }
+    .description {
+        font-size: 1em;
+    }
+    .contact-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    .social-links a svg {
+        width: 28px; /* Slightly smaller on mobile */
+        height: 28px;
+    }
+}
+
+
+/* 3. DEFINE DARK MODE OVERRIDES */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg-page: #121212;
+        --color-bg-container: #1e1e1e;
+        --color-text-primary: #f4f4f4;
+        --color-text-secondary: #aaaaaa;
+        --color-shadow: rgba(0, 0, 0, 0.25);
+    }
+
+    .contact-button:hover {
+        /* Adjust hover shadow for dark mode */
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    }
+}
