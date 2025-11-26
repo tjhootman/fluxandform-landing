@@ -172,8 +172,6 @@ footer {
     color: var(--color-text-secondary); /* Uses the lighter text color */
     background-color: var(--color-bg-page);
     text-align: center;
-    border-top: 1px solid var(--color-text-secondary);
-    border-top-color: rgba(var(--color-text-secondary), 0.1); /* Subtle divider */
 }
 
 footer p {
