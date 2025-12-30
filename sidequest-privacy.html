@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="theme-color"
+      content="#f4f4f4"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#121212"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <title>Privacy Policy - Sidequest</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Main Policy Styling Imports */
+      .policy-content .date-stamp {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 0.9em;
+        color: var(--color-text-secondary);
+      }
+      .policy-content h2 {
+        font-size: 1.8em;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+      .policy-content h3 {
+        font-size: 1.2em;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: var(--color-text-primary);
+        text-align: left;
+      }
+      .policy-content p,
+      .policy-content ul,
+      .policy-content table {
+        text-align: left;
+        font-size: 1em;
+        color: var(--color-text-secondary);
+        margin-bottom: 15px;
+        line-height: 1.6;
+      }
+      .policy-table-wrapper {
+        overflow-x: auto;
+        margin-top: 15px;
+        margin-bottom: 20px;
+      }
+      .policy-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95em;
+      }
+      .policy-table th,
+      .policy-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+      }
+      @media (prefers-color-scheme: dark) {
+        .policy-table th,
+        .policy-table td {
+          border-color: #444;
+        }
+      }
+      .policy-table th {
+        background-color: rgba(0, 0, 0, 0.05);
+        font-weight: 600;
+      }
+      @media (prefers-color-scheme: dark) {
+        .policy-table th {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+      }
+      .back-link {
+        display: block;
+        margin-bottom: 30px;
+        color: var(--color-blue-start, #007aff);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1.1em;
+      }
+      .back-link:hover {
+        text-decoration: underline;
+      }
+      /* Sidebar highlight for HealthKit as per previous draft */
+      .highlight-box {
+        padding: 15px;
+        background-color: rgba(0, 122, 255, 0.1);
+        border-left: 4px solid #007aff;
+        margin-bottom: 20px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container policy-content">
+      <a href="/" class="back-link">&larr; Back to flux & form</a>
+
+      <h2>Privacy Policy for Sidequest</h2>
+      <p class="date-stamp"><strong>Last Updated:</strong> December 30, 2025</p>
+
+      <h3>1. Introduction</h3>
+      <p>
+        <strong>Sidequest</strong> is a mobile application operated by
+        <strong>Flux & Form, LLC</strong>. This application utilizes cloud
+        synchronization and health data integration to provide a gamified
+        productivity experience.
+      </p>
+
+      <h3>2. Apple HealthKit Data</h3>
+      <div class="highlight-box">
+        <p>
+          <strong>Health & Fitness Transparency:</strong> Sidequest requests
+          access to your Apple HealthKit data (specifically steps and energy
+          burned). This data is used <strong>solely locally</strong> on your
+          device to calculate in-game Experience Points (XP). We
+          <strong>do not</strong> store raw health logs on our servers, and we
+          <strong>never</strong> share this data with advertisers or third-party
+          data brokers.
+        </p>
+      </div>
+
+      <h3>3. Data Collection & Sync</h3>
+      <p>
+        By creating an account, you acknowledge that the following data is
+        collected to facilitate cross-device synchronization:
+      </p>
+
+      <div class="policy-table-wrapper">
+        <table class="policy-table">
+          <thead>
+            <tr>
+              <th>Type of Information</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Identity Data</strong></td>
+              <td>
+                User ID and Email address provided via
+                <strong>Sign in with Apple</strong>.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Gameplay Data</strong></td>
+              <td>
+                Quest titles, progress status, and hero level stored in
+                <strong>Google Firebase</strong>.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Usage Data</strong></td>
+              <td>
+                Anonymized technical logs and crash reports to improve app
+                performance.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>4. Third-Party Service Providers</h3>
+      <p>We use the following services to secure and store your data:</p>
+      <ul>
+        <li>
+          <strong>Firebase Authentication:</strong> To manage your secure login
+          session.
+        </li>
+        <li>
+          <strong>Cloud Firestore:</strong> To store your quest logs and profile
+          progress.
+        </li>
+        <li>
+          <strong>Firebase Crashlytics:</strong> To monitor technical stability.
+        </li>
+      </ul>
+
+      <h3>5. Account & Data Deletion</h3>
+      <p>
+        In compliance with App Store guidelines, Sidequest includes an in-app
+        <strong>"Delete Account & Data"</strong> feature. Executing this command
+        will immediately and permanently purge your authentication record and
+        all associated data from our Firestore databases.
+      </p>
+
+      <h3>6. Contact Information</h3>
+      <p>
+        If you have questions regarding your data or this policy, please contact
+        us at:
+      </p>
+      <ul>
+        <li><strong>Email:</strong> support@fluxandform.io</li>
+        <li>
+          <strong>Address:</strong> 1121 Worthington Woods Blvd #6373, Columbus,
+          OH 43085
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
