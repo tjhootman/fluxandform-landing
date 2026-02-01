@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,12 +7,12 @@
 
     <meta
       name="theme-color"
-      content="#ffffff"
+      content="#fdfbf7"
       media="(prefers-color-scheme: light)"
     />
     <meta
       name="theme-color"
-      content="#0a0a0a"
+      content="#1c1917"
       media="(prefers-color-scheme: dark)"
     />
 
@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;800&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -37,83 +37,91 @@
       </header>
 
       <main>
-        <section class="hero-grid section-spacing">
-          <div class="hero-text">
-            <span class="meta-label">Est. 2025 &mdash; Columbus, OH</span>
-            <h1>
-              The digital lab for <br />
-              <span class="gradient-text">kinetic software.</span>
-            </h1>
-          </div>
-          <div class="hero-sub">
-            <p class="lead">
-              We engineer modern, intuitive mobile applications where fluid user
-              experience meets robust architecture.
-            </p>
+        <section class="hero section-spacing">
+          <span class="caps-label">Est. 2025 — Columbus, OH</span>
+          <h1>
+            We craft digital <br />
+            <span class="highlight">experiences.</span>
+          </h1>
+          <p class="lead">
+            Engineering mobile applications where fluid user intuition meets
+            robust technical architecture.
+          </p>
+        </section>
+
+        <section class="philosophy section-spacing">
+          <div class="grid-2">
+            <div class="col">
+              <h3>01 / The Motion</h3>
+              <p>
+                Real-time data, API integrations, and adaptive flows. We build
+                apps that breathe and react to the user.
+              </p>
+            </div>
+            <div class="col">
+              <h3>02 / The Structure</h3>
+              <p>
+                Pixel-perfect UI and strict security compliance. We ensure the
+                foundation never cracks.
+              </p>
+            </div>
           </div>
         </section>
 
-        <section class="philosophy-grid section-spacing">
-          <div class="col">
-            <h3>Flux / The Motion</h3>
-            <p>
-              Real-time data, API integrations, and adaptive user flows. We
-              build apps that breathe and react to the user.
-            </p>
+        <section class="work section-spacing">
+          <div class="section-header">
+            <h2>Selected Works</h2>
           </div>
-          <div class="col">
-            <h3>Form / The Structure</h3>
-            <p>
-              Robust architecture, pixel-perfect UI, and security compliance. We
-              ensure the foundation never cracks.
-            </p>
-          </div>
-        </section>
 
-        <section class="projects section-spacing">
-          <h2 class="section-label">In The Lab / Current Builds</h2>
-
-          <div class="project-grid">
-            <div class="project-item">
-              <span class="project-tag">SwiftUI</span>
-              <span class="project-title">Slot Genie</span>
-              <span class="project-desc"
-                >iOS probability tracking & analytics engine.</span
-              >
+          <div class="work-list">
+            <div class="work-item">
+              <div class="work-info">
+                <div class="work-meta">
+                  <span class="cat">Analytics Engine</span>
+                  <span class="status live">Live</span>
+                </div>
+                <h3>Slot Genie</h3>
+                <p>iOS probability tracking & visualization.</p>
+              </div>
+              <div class="work-arrow">&rarr;</div>
             </div>
 
-            <div class="project-item">
-              <span class="project-tag">Python / AI</span>
-              <span class="project-title">Narrated Classics</span>
-              <span class="project-desc"
-                >Automated audio generation pipeline.</span
-              >
+            <div class="work-item">
+              <div class="work-info">
+                <div class="work-meta">
+                  <span class="cat">Generative AI</span>
+                  <span class="status beta">Beta</span>
+                </div>
+                <h3>Narrated Classics</h3>
+                <p>Automated audio synthesis pipeline.</p>
+              </div>
+              <div class="work-arrow">&rarr;</div>
             </div>
 
-            <div class="project-item">
-              <span class="project-tag">Flutter</span>
-              <span class="project-title">Project: Construction</span>
-              <span class="project-desc"
-                >Contractor estimation utility (MVP).</span
-              >
+            <div class="work-item">
+              <div class="work-info">
+                <div class="work-meta">
+                  <span class="cat">Utility Tool</span>
+                  <span class="status dev">In Dev</span>
+                </div>
+                <h3>Construction MVP</h3>
+                <p>Contractor estimation tool.</p>
+              </div>
+              <div class="work-arrow">&rarr;</div>
             </div>
           </div>
         </section>
 
         <section class="contact section-spacing">
-          <div class="contact-inner">
-            <div class="status-indicator">
-              <span class="dot pulse"></span>
-              <span class="status-text"
-                >Current Status: <strong>Deep Work</strong></span
-              >
-            </div>
-            <p class="contact-desc">
-              We are currently focused on internal product development.<br />
-              Inquiries are reviewed weekly.
+          <div class="status-box">
+            <span class="caps-label">Current Status</span>
+            <h3>Deep Work Mode</h3>
+            <p>
+              Focused on internal product development. <br />Inquiries reviewed
+              weekly.
             </p>
-            <a href="mailto:hello@fluxandform.io" class="text-link"
-              >Submit Inquiry &rarr;</a
+            <a href="mailto:hello@fluxandform.io" class="button-outline"
+              >Submit Inquiry</a
             >
           </div>
         </section>
@@ -122,12 +130,10 @@
       <footer>
         <div class="footer-left">
           <p>&copy; 2026 Flux & Form, LLC.</p>
-          <p class="sys-ver">System Version 1.0.4</p>
         </div>
         <div class="footer-right">
-          <a href="privacy.html">Privacy Policy</a>
-
-          <a href="https://x.com/fluxandform_app">X / Twitter</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="https://x.com/fluxandform_app">Twitter</a>
           <a href="https://linkedin.com/company/flux-and-form">LinkedIn</a>
         </div>
       </footer>
