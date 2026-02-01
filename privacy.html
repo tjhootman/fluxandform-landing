@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,22 +7,23 @@
 
     <meta
       name="theme-color"
-      content="#ffffff"
+      content="#fdfbf7"
       media="(prefers-color-scheme: light)"
     />
     <meta
       name="theme-color"
-      content="#0a0a0a"
+      content="#1c1917"
       media="(prefers-color-scheme: dark)"
     />
 
-    <title>Privacy Policy - Flux & Form, LLC</title>
+    <title>Privacy Policy - Flux & Form</title>
 
     <link rel="stylesheet" href="style.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;800&display=swap"
       rel="stylesheet"
     />
 
@@ -31,11 +32,12 @@
 
       /* Typography adjustments for long-form text */
       h1 {
-        font-size: 2.5rem;
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
         font-weight: 800;
-        letter-spacing: -0.03em;
+        letter-spacing: -0.04em;
         margin-bottom: 10px;
         line-height: 1.1;
+        color: var(--text);
       }
 
       .date-stamp {
@@ -49,7 +51,7 @@
 
       h3 {
         font-size: 1.25rem;
-        font-weight: 600;
+        font-weight: 700;
         margin-top: 50px;
         margin-bottom: 20px;
         color: var(--text);
@@ -77,10 +79,11 @@
       .policy-content a {
         color: var(--accent);
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 600;
+        transition: opacity 0.2s;
       }
       .policy-content a:hover {
-        text-decoration: underline;
+        opacity: 0.8;
       }
 
       /* Responsive Tables (Modernized) */
@@ -88,7 +91,7 @@
         overflow-x: auto;
         margin: 30px 0;
         border: 1px solid var(--border);
-        border-radius: 4px; /* Slight rounded corners for tables only */
+        border-radius: 8px; /* Matching the soft corners */
       }
 
       .policy-table {
@@ -107,11 +110,9 @@
       }
 
       .policy-table th {
-        background-color: var(
-          --border
-        ); /* Subtle header background using existing var */
+        background-color: rgba(0, 0, 0, 0.03); /* Subtle header background */
         color: var(--text);
-        font-weight: 600;
+        font-weight: 700;
         font-size: 0.8rem;
         text-transform: uppercase;
         letter-spacing: 0.05em;
@@ -124,7 +125,7 @@
       /* Strong text styling */
       strong {
         color: var(--text);
-        font-weight: 600;
+        font-weight: 700;
       }
     </style>
   </head>
@@ -330,7 +331,7 @@
           <p>&copy; 2026 Flux & Form, LLC.</p>
         </div>
         <div class="footer-right">
-          <a href="index.html">Home</a>
+          <a href="index.html">Contact</a>
         </div>
       </footer>
     </div>

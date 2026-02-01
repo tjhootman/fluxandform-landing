@@ -54,9 +54,9 @@ body {
 
 /* --- Header --- */
 .site-header {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin-bottom: 100px;
   padding-bottom: 20px;
   border-bottom: 1px solid var(--border);
@@ -69,14 +69,15 @@ body {
   text-transform: lowercase;
 }
 .ampersand {
-  font-family: inherit; /* Forces it to use Manrope */
-  font-style: normal; /* Removes the italic lean */
-  font-weight: 500; /* Medium weight balances nicely with the bold text */
+  /* Change from 500/normal to 700 or 800 */
+  font-weight: 700;
+
+  /* Ensures it uses Manrope, not a system serif */
+  font-family: inherit;
+
+  /* Keep your existing color/margin */
   color: var(--accent);
-  font-size: 1.4rem; /* Keeps it the same height as the letters */
-  margin: 0 1px; /* Tight spacing for the logo look */
-  vertical-align: baseline;
-  position: static; /* Resets any previous shifts */
+  margin: 0 1px;
 }
 
 .nav-link {
@@ -106,10 +107,10 @@ body {
 }
 
 h1 {
+  letter-spacing: -0.03em;
   font-size: clamp(3rem, 7vw, 5rem);
-  font-weight: 800; /* heavy weight for impact */
+  font-weight: 800;
   line-height: 1.05;
-  letter-spacing: -0.04em;
   margin-bottom: 32px;
 }
 
