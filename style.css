@@ -1,25 +1,33 @@
 /* --- Variables --- */
 :root {
-  /* Palette: Warm Tech */
-  --bg: #fdfbf7; /* Cream Paper */
-  --text: #1c1917; /* Warm Charcoal */
-  --text-muted: #57534e; /* Stone Grey */
-  --border: #e7e5e4;
+  /* --- Theme: Graphite & Mint --- */
 
-  /* Accent: Burnt Orange (Energetic but Warm) */
-  --accent: #ea580c;
+  /* Background: Solid Charcoal (Neutral, no blue) */
+  --bg: #202020;
 
-  /* Typography */
+  /* Text: Bright White for high contrast */
+  --text: #ffffff;
+
+  /* Muted Text: Silver */
+  --text-muted: #a3a3a3;
+
+  /* Border: Lighter Charcoal */
+  --border: #333333;
+
+  /* Accent: Tech Mint (Fresh, energetic, positive) */
+  --accent: #34d399;
+
+  /* Font */
   --font-main: "Manrope", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --bg: #1c1917; /* Warm Black */
-    --text: #f5f5f4;
-    --text-muted: #a8a29e;
-    --border: #44403c;
-    --accent: #f97316; /* Lighter Orange for Dark Mode */
+    --bg: #ffffff;
+    --text: #202020;
+    --text-muted: #525252;
+    --border: #e5e5e5;
+    --accent: #059669; /* Darker Mint for light mode */
   }
 }
 
@@ -142,7 +150,7 @@ h1 {
 .col h3 {
   font-size: 1.1rem;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   color: var(--text);
 }
 .col p {
@@ -195,48 +203,46 @@ h2 {
   margin-bottom: 8px;
 }
 
+/* --- Work Tags (Mint Tech Theme) --- */
+
 .cat {
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  color: var(--text-muted); /* Keeps the category subtle (Silver) */
 }
 
 .status {
+  font-family:
+    "JetBrains Mono", monospace; /* Optional: Adds a code feel if you have it, otherwise inherits Manrope */
   font-size: 0.7rem;
   font-weight: 700;
-  padding: 2px 8px;
+  padding: 3px 8px;
   border-radius: 4px;
   text-transform: uppercase;
-}
-.live {
-  background: #dcfce7;
-  color: #166534;
-}
-.beta {
-  background: #ffedd5;
-  color: #9a3412;
-}
-.dev {
-  background: #e5e7eb;
-  color: #374151;
+  letter-spacing: 0.05em;
 }
 
-/* Dark mode overrides for status */
-@media (prefers-color-scheme: dark) {
-  .live {
-    background: #064e3b;
-    color: #6ee7b7;
-  }
-  .beta {
-    background: #7c2d12;
-    color: #fdba74;
-  }
-  .dev {
-    background: #374151;
-    color: #d1d5db;
-  }
+/* LIVE: Solid Mint (High Visibility) */
+.live {
+  background: var(--accent);
+  color: var(--bg); /* Dark text on bright mint background */
+  box-shadow: 0 0 10px rgba(52, 211, 153, 0.4); /* Subtle glow */
+}
+
+/* BETA: Transparent with Mint Border (Ghost Button style) */
+.beta {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+/* DEV: Subtle Grey (Low profile) */
+.dev {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  border: 1px solid transparent;
 }
 
 .work-info h3 {
@@ -258,39 +264,75 @@ h2 {
   color: var(--accent);
 }
 
-/* --- Contact (Soft Box) --- */
-.status-box {
-  text-align: center;
-  padding: 60px;
+/* --- Unified Panel Style (Works & Contact) --- */
+
+/* Base style for both Work Items and the Contact Box */
+.panel-card {
+  background: rgba(255, 255, 255, 0.03); /* Subtle lift from background */
   border: 1px solid var(--border);
-  border-radius: 12px; /* Soft geometry */
+  border-radius: 12px; /* 12px is the "Friendly Tech" sweet spot */
+  padding: 32px;
+  display: flex;
+  flex-direction: column; /* Stacks content */
+  gap: 16px;
+  transition: all 0.2s ease;
+  text-align: left; /* Left align is key for the "Tech" feel */
 }
 
-.status-box h3 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  margin: 16px 0;
-}
-.status-box p {
-  color: var(--text-muted);
-  margin-bottom: 32px;
+/* Hover effect for interactivity */
+.panel-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--text-muted); /* Border gets slightly brighter */
+  transform: translateY(-2px);
 }
 
-.button-outline {
-  display: inline-block;
-  padding: 12px 28px;
-  border: 2px solid var(--text);
-  border-radius: 50px; /* Pill shape from Option 3 */
+/* --- Specific Tweaks for Work Items --- */
+.work-item {
+  /* Inherit the panel styles */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+
+  /* Layout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.work-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--text-muted);
+  transform: translateY(-2px);
+}
+
+/* --- Specific Tweaks for Contact Box --- */
+.status-box {
+  /* Remove old centered styles and apply Panel style manually or via class */
+  /* We will apply the .panel-card class directly in HTML to keep CSS clean */
+}
+
+/* The "Friendly Tech" Button */
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
   color: var(--text);
-  text-decoration: none;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.95rem;
-  transition: all 0.2s;
+  text-decoration: none;
+  transition: color 0.2s;
 }
-.button-outline:hover {
-  background: var(--text);
-  color: var(--bg);
+
+.action-link:hover {
+  color: var(--accent); /* Turns Mint on hover */
+}
+
+.action-link span {
+  font-size: 1.2rem;
+  line-height: 1;
 }
 
 /* --- Footer --- */
@@ -312,26 +354,65 @@ footer {
   color: var(--text);
 }
 
-/* Mobile */
+/* --- Mobile Dashboard Polish --- */
 @media (max-width: 600px) {
   .container {
     padding: 40px 20px;
   }
+
+  /* 1. Safe Headline Sizing */
   .hero h1 {
-    font-size: 3rem;
+    font-size: 2.5rem; /* 3rem can sometimes overflow on smaller iPhones */
+    margin-bottom: 24px;
   }
-  .work-item {
-    padding: 24px;
+
+  /* 2. Stack the Philosophy Grid */
+  /* Ensures "The Motion" and "The Structure" sit on top of each other */
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 48px;
   }
+
+  /* 3. Refine the Panels (Work Items) */
+  .work-item,
+  .panel-card {
+    padding: 24px; /* Slightly tighter padding */
+    flex-direction: column; /* Stack content vertically */
+    align-items: flex-start;
+    gap: 16px;
+  }
+
   .work-arrow {
-    display: none;
-  } /* Hide arrow on mobile to save space */
+    display: none; /* Keep this hidden */
+  }
+
+  /* Make the metadata (Tags) stretch across the top */
+  .work-meta {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Tag on right, Category on left */
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  /* 4. Touch-Friendly Action Button */
+  /* Makes the "Start Conversation" link a full-width button */
+  .action-link {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+
+  /* 5. Footer Stacking */
   footer {
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
     text-align: center;
-  }
-  .footer-right a {
-    margin: 0 10px;
+    padding-bottom: 40px;
   }
 }
