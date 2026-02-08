@@ -240,9 +240,14 @@ h2 {
 
 /* DEV: Subtle Grey (Low profile) */
 .dev {
-  background: rgba(255, 255, 255, 0.1);
+  /* Remove the white fill, as it is invisible in light mode */
+  background: transparent;
+
+  /* Keep the text subtle */
   color: var(--text-muted);
-  border: 1px solid transparent;
+
+  /* CHANGE: Use the system border variable so it adapts to light/dark */
+  border: 1px solid var(--border);
 }
 
 .work-info h3 {
