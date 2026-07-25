@@ -1,0 +1,66 @@
+---
+// Social links as mono text links, not icons — icons would be the only glyphs
+// on an otherwise purely typographic page (BRIEF §4).
+const socials = [
+  { label: 'Instagram', href: 'https://instagram.com/fluxandform_apps' },
+  { label: 'X', href: 'https://x.com/fluxandform_app' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/company/flux-and-form' },
+];
+---
+
+<footer class="page footer spread">
+  <div class="footer__bar">
+    <nav class="footer__group mono" aria-label="Contact and social">
+      <a class="footer__link" href="mailto:hello@fluxandform.io">hello@fluxandform.io</a>
+      {socials.map((s) => <a class="footer__link" href={s.href}>{s.label}</a>)}
+    </nav>
+    <p class="footer__group mono">
+      <span>&copy; 2026 FLUX &amp; FORM, LLC</span>
+      <span class="footer__sep" aria-hidden="true">/</span>
+      <a class="footer__link" href="/privacy">PRIVACY</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    margin-top: var(--section-gap);
+    padding-bottom: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  /* The footer bar sits in the content column only — its rule shares BOTH edges
+     with the section rules, and the label column reads as margin, not content. */
+  .footer__bar {
+    grid-column: content;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem 2rem;
+    padding-top: clamp(1.25rem, 3vw, 1.75rem);
+    border-top: 1px solid var(--rule-strong);
+  }
+
+  .footer__group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem 1.4rem;
+    margin: 0;
+  }
+
+  .footer__link {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .footer__link:hover {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .footer__sep {
+    color: var(--rule-strong);
+  }
+</style>

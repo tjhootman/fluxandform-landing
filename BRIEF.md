@@ -94,18 +94,20 @@ Three sentences, three full stops. Do not join them with conjunctions.
 
 Section label: `HOUSE RULES`
 
-> **Your data doesn't travel without a reason.**
-> On your device by default. On a server only when the app can't work any other way.
->
-> **It has to be worth keeping.**
-> Either it does something nothing else does, or it's simply a good time.
->
-> **Nobody's counting.**
-> No streaks, no notifications you didn't ask for, nothing that rewards you for staying.
+One continuous prose paragraph. The three bold phrases are run-in heads set
+inline within the prose — not headings on their own lines, and not a list. This
+section deliberately does not share the item rhythm of the BUILDING section.
+
+> **Your data doesn't travel without a reason.** Apps stay on your device by
+> default and only reach for a server when they can't work any other way.
+> **Nobody's counting.** No streaks, no notifications you didn't ask for, nothing
+> measured in time spent. **And it has to be worth keeping.** Either it does
+> something nothing else does, or it's simply a good time. A slightly worse
+> version of something you already have isn't worth either of our time.
 
 ### Section: What I'm building
 
-Section label: `BUILDING` / `04` — the count is derived from the data file, not hardcoded.
+Section label: `BUILDING`. No count in the label.
 
 > **Inkling**
 > A calmer place to think. Talk to it and it writes down what you said, without sending
@@ -127,7 +129,7 @@ All four are currently `building`.
 
 Section label: `BACKGROUND`
 
-> Before this, fourteen years in civil design — most recently as a senior designer at a
+> Before this, fourteen years in civil design, most recently as a senior designer at a
 > national engineering firm here in Columbus. Before that, GIS: building the data and
 > the tools other people's work depended on. AWS certified, finishing a software
 > development degree.

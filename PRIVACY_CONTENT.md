@@ -57,7 +57,3 @@ Under certain data protection laws, you have the right to request access to, cor
 ## 7. Children's Privacy (COPPA)
 
 Our Service is not directed to anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13. If you are a parent or guardian and are aware that your child has provided us with Personal Information, please contact us.
-
----
-
-© 2026 Flux & Form, LLC.

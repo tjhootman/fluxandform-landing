@@ -1,0 +1,345 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Content is verbatim from PRIVACY_CONTENT.md (BRIEF §9: preserve unchanged).
+// Only the presentation follows the studio design direction (BRIEF §5).
+---
+
+<BaseLayout
+  title="Privacy Policy — Flux & Form"
+  description="Privacy policy for Flux & Form, LLC and its applications."
+  path="/privacy"
+>
+  <div class="privacy">
+    <header class="privacy__head spread">
+      <div class="privacy__head-body">
+        <h1 class="privacy__title">Privacy Policy</h1>
+        <p class="mono label privacy__updated">Last updated: December 21, 2025</p>
+      </div>
+    </header>
+
+    <section class="section spread">
+      <hr class="section__rule" />
+      <p class="section__label mono label" aria-hidden="true">01</p>
+      <div class="section__body prose">
+        <h2>Introduction &amp; Contact Information</h2>
+        <p>
+          <strong>Flux &amp; Form, LLC</strong> ("we," "us," or "our") operates
+          mobile applications (the "Service"). This Privacy Policy informs you of
+          our policies regarding the collection, use, and disclosure of Personal
+          Information we receive from users of the Service.
+        </p>
+        <p><strong>Contact Us:</strong></p>
+        <ul>
+          <li>
+            <strong>Email:</strong>
+            <a href="mailto:support@fluxandform.io">support@fluxandform.io</a>
+          </li>
+          <li>
+            <strong>Address:</strong> 1121 Worthington Woods Blvd #6373, Columbus,
+            OH 43085
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section spread">
+      <hr class="section__rule" />
+      <p class="section__label mono label" aria-hidden="true">02</p>
+      <div class="section__body prose">
+        <h2>Policy for Local-Only &amp; Offline Applications</h2>
+        <p>
+          For applications designated as "Local-Only," "Offline," or "Standalone"
+          (including the application "Nightfall"):
+        </p>
+        <ul>
+          <li>
+            <strong>No Data Transmission:</strong> We do not collect, transmit, or
+            store any personal data, usage statistics, or gameplay data on external
+            servers. All data is processed locally on your device.
+          </li>
+          <li>
+            <strong>Local Storage:</strong> Game data (such as player names, roles,
+            and settings) is stored in the device's local memory (e.g., UserDefaults
+            or Apple iCloud Keychain) and is removed if the application is uninstalled.
+          </li>
+          <li>
+            <strong>No Third-Party Tracking:</strong> These specific applications do
+            not currently utilize third-party analytics, advertising frameworks, or
+            tracking pixels.
+          </li>
+          <li>
+            <strong>Permissions:</strong> These applications do not request access to
+            sensitive device features such as the camera, microphone, or precise
+            location services.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section spread">
+      <hr class="section__rule" />
+      <p class="section__label mono label" aria-hidden="true">03</p>
+      <div class="section__body prose">
+        <h2>General Information Collection (Online Apps)</h2>
+        <p>
+          For applications that explicitly utilize online features, accounts, or
+          analytics, the following applies:
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Type of Information</th>
+                <th scope="col">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Non-Personal Data</th>
+                <td>
+                  We <strong>may</strong> collect anonymized usage statistics (e.g.,
+                  how often features are used, crash reports) to improve app stability.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Personal Data</th>
+                <td>
+                  We <strong>DO NOT</strong> collect personal data such as names,
+                  addresses, or phone numbers <strong>UNLESS</strong> you create an
+                  account or purchase a subscription.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Location Data</th>
+                <td>
+                  We <strong>DO NOT</strong> collect precise location data
+                  <strong>UNLESS</strong> you explicitly grant permission to use the
+                  map feature.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section spread">
+      <hr class="section__rule" />
+      <p class="section__label mono label" aria-hidden="true">04</p>
+      <div class="section__body prose">
+        <h2>Third-Party Service Providers</h2>
+        <p>
+          We <strong>may</strong> utilize the following third-party services in certain
+          applications to operate, monetize, and improve the Service. Please refer to
+          the specific application's App Store "App Privacy" label to confirm which of
+          these services are active for that specific app.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Service</th>
+                <th scope="col">Data Collected</th>
+                <th scope="col">Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Firebase Analytics</th>
+                <td>Device IDs (pseudo-anonymous), app usage data.</td>
+                <td>Analyzing user engagement and optimizing app features.</td>
+              </tr>
+              <tr>
+                <th scope="row">Firebase Crashlytics</th>
+                <td>Device state, unique installation identifiers, crash logs.</td>
+                <td>Monitoring technical stability and identifying bugs.</td>
+              </tr>
+              <tr>
+                <th scope="row">Google AdMob</th>
+                <td>Device identifiers, IP address, app usage data.</td>
+                <td>Serving and tracking contextual or personalized advertising.</td>
+              </tr>
+              <tr>
+                <th scope="row">Apple In-App Purchases</th>
+                <td>Transaction data (excluding full payment details).</td>
+                <td>Processing and managing in-app subscription and purchase transactions.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Third-Party Privacy Policy Links:</strong></p>
+        <ul>
+          <li>
+            Google Privacy Policy (Firebase, AdMob):
+            <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>
+          </li>
+          <li>
+            Apple Privacy Policy (In-App Purchases):
+            <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section spread">
+      <hr class="section__rule" />
+      <p class="section__label mono label" aria-hidden="true">05</p>
+      <div class="section__body prose">
+        <h2>Data Security &amp; Retention</h2>
+        <p>
+          The security of your Personal Information is important to us, but remember
+          that no method of transmission over the Internet is 100% secure. We retain
+          your data only for as long as necessary to fulfill the purposes outlined in
+          this policy.
+        </p>
+      </div>
+    </section>
+
+    <section class="section spread">
+      <hr class="section__rule" />
+      <p class="section__label mono label" aria-hidden="true">06</p>
+      <div class="section__body prose">
+        <h2>Your Rights (GDPR / CCPA)</h2>
+        <p>
+          Under certain data protection laws, you have the right to request access to,
+          correction of, or deletion of your Personal Information. You may exercise
+          these rights by contacting us via the email address listed above.
+        </p>
+      </div>
+    </section>
+
+    <section class="section spread">
+      <hr class="section__rule" />
+      <p class="section__label mono label" aria-hidden="true">07</p>
+      <div class="section__body prose">
+        <h2>Children's Privacy (COPPA)</h2>
+        <p>
+          Our Service is not directed to anyone under the age of 13. We do not knowingly
+          collect personally identifiable information from children under 13. If you are
+          a parent or guardian and are aware that your child has provided us with Personal
+          Information, please contact us.
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .privacy__head {
+    margin-top: clamp(2.5rem, 7vw, 4.5rem);
+  }
+  /* Title block sits in the content column, aligned with the sections below and
+     the landing page's measure. */
+  .privacy__head-body {
+    grid-column: content;
+  }
+
+  .privacy__title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+    line-height: 1.1;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .privacy__updated {
+    margin-top: 0.8rem;
+    color: var(--muted);
+  }
+
+  .section__label {
+    color: var(--muted);
+  }
+
+  /* Prose text keeps a readable measure within the wide content column
+     (structural rules span the full column; text does not). */
+  .prose h2,
+  .prose p,
+  .prose ul {
+    max-width: var(--measure-text);
+  }
+
+  .prose h2 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: 1.25;
+    color: var(--ink);
+    margin: 0 0 0.9rem;
+  }
+
+  .prose p {
+    margin: 0 0 1rem;
+  }
+
+  .prose ul {
+    margin: 0 0 1rem;
+    padding-left: 1.1rem;
+  }
+
+  .prose li {
+    margin-bottom: 0.55rem;
+  }
+
+  .prose li::marker {
+    color: var(--muted);
+  }
+
+  .prose a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    text-decoration-thickness: 1px;
+    word-break: break-word;
+  }
+  .prose a:hover {
+    color: var(--muted);
+  }
+
+  /* Tables: hairlines only — no cards, no fills (BRIEF §5) */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 0 0 1rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  thead th {
+    font-family: var(--font-mono);
+    font-size: var(--label-size);
+    letter-spacing: var(--label-tracking);
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 400;
+    text-align: left;
+    padding: 0 1rem 0.6rem 0;
+    border-bottom: 1px solid var(--rule-strong);
+    vertical-align: bottom;
+  }
+  tbody th {
+    font-weight: 600;
+    text-align: left;
+    color: var(--ink);
+  }
+  tbody th,
+  tbody td {
+    padding: 0.75rem 1rem 0.75rem 0;
+    border-bottom: 1px solid var(--rule-hair);
+    vertical-align: top;
+  }
+  tbody th {
+    white-space: nowrap;
+    padding-right: 1.5rem;
+  }
+
+  @media (max-width: 40rem) {
+    tbody th {
+      white-space: normal;
+    }
+  }
+</style>
