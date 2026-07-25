@@ -1,0 +1,64 @@
+---
+// The thin, persistent studio frame for per-app pages (BRIEF §6): wordmark +
+// a link back to the studio. The footer (shared) completes the frame. Uses the
+// same grid as the rest of the site — wordmark at the frame edge, back link and
+// rule aligned to the content column — so app pages read as the same studio.
+---
+
+<header class="page studioframe spread">
+  <div class="studioframe__bar">
+    <a href="/" class="studioframe__mark">Flux <span class="amp">&amp;</span> Form</a>
+    <a href="/" class="mono label studioframe__back">Studio Index</a>
+  </div>
+  <hr class="studioframe__rule" />
+</header>
+
+<style>
+  /* Wordmark + back link span from the frame edge to the content's right edge
+     (like the landing header); the rule below is content-only (like every other
+     rule), so the label column reads as margin. */
+  .studioframe__bar {
+    grid-column: label / edge;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    padding-top: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .studioframe__rule {
+    grid-column: content;
+    border: 0;
+    border-top: 1px solid var(--rule-strong);
+    margin: clamp(1rem, 2.5vw, 1.5rem) 0 0;
+  }
+
+  .studioframe__mark {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .studioframe__mark .amp {
+    font-weight: 400;
+    margin-inline: 0.05em;
+  }
+
+  .studioframe__back {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .studioframe__back::before {
+    content: '\2190 '; /* ← */
+  }
+
+  .studioframe__back:hover {
+    color: var(--ink);
+  }
+</style>

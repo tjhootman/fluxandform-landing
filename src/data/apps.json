@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "inkling",
+    "name": "Inkling",
+    "blurb": "A calmer place to think. Talk to it and it writes down what you said, without sending a word anywhere.",
+    "status": "building",
+    "accent": "#2E5A5C",
+    "appStoreUrl": null,
+    "testFlightUrl": null
+  },
+  {
+    "slug": "nightfall",
+    "name": "Nightfall",
+    "blurb": "A narrator and moderator for Werewolf, so nobody has to sit out to run the game.",
+    "status": "building",
+    "accent": "#CC9933",
+    "appStoreUrl": null,
+    "testFlightUrl": null
+  },
+  {
+    "slug": "greenroom",
+    "name": "Greenroom",
+    "blurb": "A quieter place to talk about film. Connection over collection.",
+    "status": "building",
+    "accent": "#367A5C",
+    "appStoreUrl": null,
+    "testFlightUrl": null
+  },
+  {
+    "slug": "vibedeck",
+    "name": "VibeDeck",
+    "blurb": "Everyone at the party gets a say in what plays next. The host runs Apple Music, the room votes, the queue moves live.",
+    "status": "building",
+    "accent": "#7F00FF",
+    "appStoreUrl": null,
+    "testFlightUrl": null
+  }
+]

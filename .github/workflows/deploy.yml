@@ -1,0 +1,43 @@
+name: Deploy to GitHub Pages
+
+# main is the live site. Deploy ONLY on push to main, plus manual dispatch.
+# Never on the redesign branch, never on pull requests (BRIEF handoff).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Least privilege for the official Pages deployment.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never cancel an in-flight production deploy.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build with Astro
+        # Official Astro action: installs deps, runs `astro build` from the repo
+        # root, and uploads ./dist as the Pages artifact. CNAME ships via public/.
+        uses: withastro/action@v3
+        with:
+          node-version: 22
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

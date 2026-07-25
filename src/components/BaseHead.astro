@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path only, e.g. "/privacy". Canonical + og:url are built from site. */
+  path?: string;
+}
+
+const { title, description, path = '/' } = Astro.props;
+const canonical = new URL(path, Astro.site).href;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<!-- Warm paper, everywhere. No dark mode (BRIEF §9). -->
+<meta name="theme-color" content="#f3efe6" />
+<meta name="color-scheme" content="light" />
+
+<!-- Favicon: SVG with PNG fallback for clients without SVG favicon support. -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon.png" type="image/png" sizes="48x48" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<!-- Self-hosted fonts, preloaded. No third-party requests (BRIEF §9). -->
+<link
+  rel="preload"
+  href="/fonts/Fraunces-Display.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/CommitMono-Regular.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Flux & Form" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={new URL('/og.png', Astro.site).href} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="1200" />
+<meta
+  property="og:image:alt"
+  content="Flux & Form. The good part is happening off-screen. I build apps that know it."
+/>
+<meta name="twitter:card" content="summary_large_image" />

@@ -1,0 +1,95 @@
+---
+import Hero from './Hero.astro';
+import Section from './Section.astro';
+import AppRow from './AppRow.astro';
+import { apps } from '../lib/apps';
+
+// The assembled landing body, shared by the real page (index.astro) and the
+// dev-only serif lab (serif.astro) so they can never drift apart.
+---
+
+<div class="intro">
+  <Hero />
+  <!-- Three sentences, three full stops. Not joined with conjunctions (BRIEF §4). -->
+  <p class="subhead">
+    I'm Todd. I build iOS apps. Flux and Form is my one-person studio in Columbus,
+    Ohio.
+  </p>
+</div>
+
+<Section label="House rules">
+  <!--
+    One continuous paragraph with bold run-in heads (BRIEF §4). Deliberately NOT
+    a list — principles shouldn't share the item rhythm of the Building section.
+    Copy is final; set exactly as written.
+  -->
+  <p class="house-rules">
+    <strong>Your data doesn't travel without a reason.</strong> Apps stay on your
+    device by default and only reach for a server when they can't work any other
+    way. <strong>Nobody's counting.</strong> No streaks, no notifications you
+    didn't ask for, nothing measured in time spent.
+    <strong>And it has to be worth keeping.</strong> Either it does something
+    nothing else does, or it's simply a good time. A slightly worse version of
+    something you already have isn't worth either of our time.
+  </p>
+</Section>
+
+<Section label="Building">
+  <div class="building">
+    {apps.map((app) => <AppRow app={app} />)}
+  </div>
+</Section>
+
+<Section label="Background">
+  <div class="prose">
+    <p>
+      Before this, fourteen years in civil design, most recently as a senior
+      designer at a national engineering firm here in Columbus. Before that, GIS:
+      building the data and the tools other people's work depended on. AWS
+      certified, finishing a software development degree.
+    </p>
+    <p>
+      Infrastructure work teaches you to think in loads and tolerances, and to
+      assume the thing you're drawing will outlast your involvement in it. I build
+      software the same way.
+    </p>
+  </div>
+</Section>
+
+<style>
+  .intro {
+    margin-bottom: clamp(1rem, 3vw, 2rem);
+  }
+
+  .subhead {
+    font-family: var(--font-sans);
+    /* Sits on one line at default desktop width; wraps naturally as the
+       viewport narrows. Measure widened from its old 34ch so it no longer
+       makes an awkward short silhouette under the hero (BRIEF §4 copy intact). */
+    font-size: clamp(1.1rem, 0.8rem + 0.85vw, 1.28rem);
+    line-height: 1.5;
+    color: var(--ink);
+    max-width: var(--measure-text);
+    /* Tight to the hero so the two bind as one intro block, well clear of the
+       first section rule below. */
+    margin-top: clamp(0.6rem, 1.4vw, 1rem);
+  }
+
+  /* House rules — one prose paragraph with bold run-in heads. No internal items,
+     so no hairline rules. Body size (not the heading step); run-in heads carry
+     the same 600 weight the old headings did. */
+  .house-rules {
+    max-width: var(--measure-text);
+    color: var(--ink);
+  }
+  .house-rules strong {
+    font-weight: 600;
+  }
+
+  .prose p {
+    max-width: var(--measure-text);
+  }
+  .prose p + p {
+    margin-top: 1.15rem;
+  }
+</style>

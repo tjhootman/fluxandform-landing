@@ -1,0 +1,54 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+  /** Link the header wordmark home (false on the landing page itself). */
+  linkedWordmark?: boolean;
+  /** Use the narrower reading measure (prose-heavy pages like privacy). */
+  narrow?: boolean;
+}
+
+const {
+  title,
+  description,
+  path = '/',
+  linkedWordmark = true,
+  narrow = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} path={path} />
+  </head>
+  <body>
+    <a class="skip-link mono" href="#main">Skip to content</a>
+    <Header linked={linkedWordmark} />
+    <main id="main" class:list={['page', { 'page--reading': narrow }]}>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 0.6rem 0.9rem;
+    z-index: 10;
+  }
+  .skip-link:focus {
+    left: 0.5rem;
+    top: 0.5rem;
+  }
+</style>

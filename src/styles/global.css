@@ -1,0 +1,247 @@
+/* =========================================================================
+   Flux & Form — global styles
+   "A spec sheet on paper." Type, hairline rules, whitespace, one colour mark
+   per app. No cards, shadows, gradients, rounded boxes, icons, illustration.
+   No dark mode: the paper is the identity and must not invert (BRIEF §9).
+   ========================================================================= */
+
+/* ---- Fonts -------------------------------------------------------------- */
+
+/* Commit Mono — labels, metadata, footer only. SIL OFL 1.1; self-hosted.
+   Licence text ships at /fonts/CommitMono-OFL.txt. */
+@font-face {
+  font-family: 'Commit Mono';
+  src: url('/fonts/CommitMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fraunces — hero headline only. A static instance pinned at the chosen axes
+   (opsz 144 · wght 400 · SOFT 0 · WONK 0): old-style warmth at display size,
+   without the flared WONK drama. SIL OFL 1.1; self-hosted. Licence text ships
+   at /fonts/Fraunces-OFL.txt. */
+@font-face {
+  font-family: 'Fraunces';
+  src: url('/fonts/Fraunces-Display.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---- Design tokens ------------------------------------------------------ */
+
+:root {
+  /* Paper — warm, not white, not dark. The identity. */
+  --paper: #f3efe6;
+
+  /* Ink */
+  --ink: #201e1a;          /* primary text — 14.5:1 on paper */
+  --ink-soft: #7a7266;     /* hero line 2, lighter tone — 4.1:1 (AA large) */
+  --muted: #5a5349;        /* mono labels / meta / footer — 6.6:1 at 11px (AA) */
+
+  /* Rules */
+  --rule-strong: #2a2620;  /* full-strength rule at the top of each section */
+  --rule-hair: #d6cfc0;    /* lighter rule between items within a section */
+
+  /* Type families */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  --font-mono: 'Commit Mono', ui-monospace, SFMono-Regular, Menlo, Consolas,
+    'Liberation Mono', monospace;
+  /* Hero serif: self-hosted Fraunces, with a system serif fallback for the
+     brief swap-in window (font-display: swap) and the no-webfont edge case. */
+  --font-serif-fallback: 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --font-serif: 'Fraunces', var(--font-serif-fallback);
+
+  /* Mono label treatment (BRIEF §7): uppercase, ~0.07em, 10–11px, regular. */
+  --label-size: 0.6875rem; /* 11px */
+  --label-tracking: 0.07em;
+
+  /* Rhythm & layout */
+  /* One content measure. The narrow label column sits to its left (not part of
+     the measure). Widths are in px so they don't scale with the browser's base
+     font size. */
+  /* Label column sized in rem (not vw) so it scales with the label text and
+     always fits the longest label — "BUILDING — 04" — plus the gutter. */
+  --gutter: clamp(1rem, 1.5vw, 1.5rem);
+  --label-col: 7.5rem;
+  --content-max: 1150px;   /* HARD ceiling: content column — text, rules, badges */
+  --measure-text: 72ch;    /* readable body-copy cap (secondary constraint) */
+  --page-max: 1440px;      /* the hero may fill this; content stays capped above */
+  --reading-max: 44rem;    /* narrower cap for prose-heavy pages (privacy) */
+  --section-gap: clamp(4rem, 9vw, 7.5rem);
+  --pad-x: clamp(1.5rem, 4vw, 4rem); /* generous outer margins — printed-page air */
+}
+
+/* ---- Reset / base ------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Reserve the scrollbar gutter so column math (and right edges) stay stable
+     whether or not the page scrolls. */
+  scrollbar-gutter: stable;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;    /* 17px body */
+  line-height: 1.6;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* ---- Page frame --------------------------------------------------------- */
+
+.page {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--pad-x);
+}
+
+/* Prose-heavy pages (privacy) keep a readable measure instead of the wide one. */
+.page--reading {
+  max-width: var(--reading-max);
+}
+
+/* ---- The document grid --------------------------------------------------- */
+/* A single content measure. Section rules, item hairlines, body copy, and status
+   badges all live in the `content` column and therefore share identical left and
+   right edges down the whole page. The mono label sits in the narrow `label`
+   column beside its section, outside the measure. The hero is the single
+   deliberate exception — it spans the full page, wider than the measure. */
+
+/* label | content (capped at --content-max) | trailing space the hero can use.
+   Everything in `content` shares one right edge; only the hero spans into the
+   trailing column, past the content's right edge (the one exception). */
+.spread {
+  display: grid;
+  grid-template-columns:
+    [label] var(--label-col)
+    [content] minmax(0, var(--content-max))
+    [edge] minmax(0, 1fr);
+  column-gap: var(--gutter);
+  align-items: start;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns:
+    [label] var(--label-col)
+    [content] minmax(0, var(--content-max))
+    [edge] minmax(0, 1fr);
+  column-gap: var(--gutter);
+}
+.intro > .hero {
+  /* Shares the content column's LEFT edge with everything else; may run into
+     the trailing column on the right (its only allowed break). At the current
+     size its longest line lands ~flush with the right rule. */
+  grid-column: content / -1;
+}
+.intro > .subhead {
+  grid-column: content;
+}
+
+/* ---- Mono type: labels, metadata, badges, footer ------------------------ */
+/* `.mono` is the base (footer email/links keep their given casing). `.label`
+   adds the uppercase + wider tracking treatment for section labels, badges,
+   and the header meta line (BRIEF §7). */
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--label-size);
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--muted);
+  font-feature-settings: 'liga' 0;
+}
+
+.label {
+  text-transform: uppercase;
+  letter-spacing: var(--label-tracking);
+}
+
+/* ---- Section ------------------------------------------------------------ */
+
+.section {
+  margin-top: var(--section-gap);
+}
+
+/* Full-strength rule at the top of each section — placed in the content column
+   (row 1), so it does NOT span the label column and shares its left and right
+   edges with the item hairlines and status badges below it. Section rules and
+   item hairlines are the same length; they differ only by tone (rule-strong vs
+   rule-hair), never by width. */
+.section__rule {
+  grid-column: content;
+  grid-row: 1;
+  border: 0;
+  border-top: 1px solid var(--rule-strong);
+  margin: 0 0 clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.section__label {
+  grid-column: label;
+  grid-row: 2;
+  padding-top: 0.15rem; /* optically align caps to the body's first line */
+}
+
+.section__body {
+  grid-column: content;
+  grid-row: 2;
+}
+
+/* ---- Reflow: narrow screens (BRIEF §9) ---------------------------------- */
+/* Labels stack ABOVE their section as small mono headers — never orphaned
+   beside content. Collapse to a single column (rule, label, body in source
+   order); the hero stays full width. */
+
+@media (max-width: 40rem) {
+  /* Collapse to one column, but keep every named line (label / content / edge)
+     on it, so all grid-column placements — including component-scoped ones —
+     resolve to the single full-width column without needing a per-element
+     reset (which scoped specificity would otherwise defeat). */
+  .spread,
+  .intro {
+    grid-template-columns: [label content] minmax(0, 1fr) [edge];
+    row-gap: 0.85rem;
+  }
+  /* Stack rule, label, body in source order instead of the desktop 2-row grid. */
+  .section__rule,
+  .section__label,
+  .section__body {
+    grid-row: auto;
+  }
+  .section__label {
+    padding-top: 0;
+  }
+}

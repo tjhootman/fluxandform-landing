@@ -1,0 +1,55 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import StudioFrame from '../components/StudioFrame.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  /** App slug -> exposed as data-app so per-app styles can be added later. */
+  slug: string;
+}
+
+const { title, description, path, slug } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} path={path} />
+  </head>
+  <body>
+    <a class="skip-link mono" href="#main">Skip to content</a>
+    <StudioFrame />
+    <!--
+      Everything inside <main> belongs to the app. Longer term each app takes on
+      its own aesthetic here (BRIEF §6); `data-app` is the hook for those
+      per-page overrides. The v1 template uses the neutral studio aesthetic.
+    -->
+    <main id="main" class="page app-page" data-app={slug}>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 0.6rem 0.9rem;
+    z-index: 10;
+  }
+  .skip-link:focus {
+    left: 0.5rem;
+    top: 0.5rem;
+  }
+
+  .app-page {
+    padding-top: clamp(3rem, 8vw, 5rem);
+  }
+</style>

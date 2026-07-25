@@ -1,0 +1,46 @@
+---
+// The hero is the only display-scale element on the page (BRIEF §5).
+//
+// The two lines are CONTENT, not layout (BRIEF §4/§9): they must render as two
+// distinct lines with a visible beat between them at EVERY breakpoint, and the
+// second line is set in a lighter tone. They are separate block elements so they
+// can never collapse into one flowing paragraph.
+//
+// FONT: the hero is set in Fraunces (self-hosted static instance at
+// opsz 144 · wght 400 · SOFT 0 · WONK 0) via --font-serif. Its axes are baked
+// into the instance, so no font-variation-settings are needed here.
+---
+
+<h1 class="hero">
+  <span class="hero__line hero__line--lead">The good part is happening off-screen.</span>
+  <span class="hero__line hero__line--soft">I build apps that know it.</span>
+</h1>
+
+<style>
+  .hero {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2.45rem, 1.1rem + 6.1vw, 5.25rem);
+    line-height: 1.08;
+    letter-spacing: -0.011em;
+    margin-top: clamp(2.75rem, 8vw, 5.5rem);
+    /* The single deliberate grid exception: the hero fills the full page width,
+       running wider than the content measure. No max-width cap. */
+    max-width: none;
+    text-wrap: balance;
+  }
+
+  .hero__line {
+    display: block;
+  }
+
+  .hero__line--lead {
+    color: var(--ink);
+  }
+
+  /* the beat between the two lines + the lighter second tone (BRIEF §4) */
+  .hero__line--soft {
+    color: var(--ink-soft);
+    margin-top: 0.32em;
+  }
+</style>

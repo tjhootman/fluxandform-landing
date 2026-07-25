@@ -1,0 +1,46 @@
+---
+interface Props {
+  /** Visible section label; also the section's accessible heading (BRIEF §9). */
+  label: string;
+  /** Optional derived count shown beside the label, e.g. "04" for BUILDING. */
+  count?: string;
+  /** Anchor id for the <section>. */
+  id?: string;
+}
+
+const { label, count, id } = Astro.props;
+const headingId = `sec-${(id ?? label).toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+---
+
+<section class="section spread" id={id} aria-labelledby={headingId}>
+  <hr class="section__rule" />
+  <div class="section__label">
+    <h2 id={headingId} class="mono label">{label}</h2>
+    {count && <span class="mono label section__count" aria-hidden="true">&#8212; {count}</span>}
+  </div>
+  <div class="section__body">
+    <slot />
+  </div>
+</section>
+
+<style>
+  /* Label + count read inline on one line: BUILDING — 04 (not stacked, which
+     read as a building number). */
+  .section__label {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.35em;
+    white-space: nowrap;
+  }
+
+  .section__label h2 {
+    margin: 0;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .section__count {
+    color: var(--ink-soft);
+  }
+</style>
