@@ -15,7 +15,8 @@
     "status": "building",
     "accent": "#CC9933",
     "appStoreUrl": null,
-    "testFlightUrl": null
+    "testFlightUrl": null,
+    "hasSite": true
   },
   {
     "slug": "greenroom",

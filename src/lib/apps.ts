@@ -16,6 +16,12 @@ export interface App {
   accent: string;
   appStoreUrl: string | null;
   testFlightUrl: string | null;
+  /**
+   * The app ships its own hand-built page at /<slug>/ (in public/), so the
+   * generated detail template is skipped for it. The landing card still links
+   * to /<slug>. Defaults to false (uses the neutral studio template).
+   */
+  hasSite?: boolean;
 }
 
 /** A resolved call-to-action for a card / detail page, or null when the status has none. */

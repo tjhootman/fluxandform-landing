@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nightfall — The moderator has left the table</title>
+  <meta name="description" content="Nightfall is a cinematic moderator for the social deduction game Werewolf. Voice narration and sound run the night — so everyone at the table gets to play." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" type="image/png" href="assets/nightfall-icon.png" />
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nightfall" />
+  <meta property="og:description" content="A cinematic moderator for Werewolf. The narrator runs the night — so everyone plays." />
+  <meta property="og:image" content="https://fluxandform.io/nightfall/assets/nightfall-hero.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root {
+      --bg: #000000;
+      --card: #1a1a1f;
+      --gold: #cc9933;
+      --crimson: #991a1a;
+      --bone: #e6e6d9;
+      --muted: #8a8a82;
+      --serif: "New York", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--bone);
+      font-family: var(--serif);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+    /* Uppercase tracked label — the app's signature header treatment */
+    .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 64px;
+      overflow: hidden;
+    }
+    /* Radial crimson glow — from OnboardingView */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 42%, rgba(153, 26, 26, 0.28), rgba(0, 0, 0, 0) 60%);
+      z-index: 0;
+    }
+    .hero > * { position: relative; z-index: 1; }
+
+    .hero-art {
+      width: 240px;
+      height: 240px;
+      max-width: 60vw;
+      border-radius: 50%;
+      margin-bottom: 36px;
+      box-shadow: 0 0 80px rgba(204, 153, 51, 0.18);
+    }
+
+    .wordmark {
+      font-size: clamp(3rem, 12vw, 6.5rem);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-shadow: 0 0 40px rgba(204, 153, 51, 0.25);
+      line-height: 1;
+    }
+
+    .tagline {
+      margin-top: 24px;
+      font-size: clamp(1.25rem, 3.4vw, 1.85rem);
+      font-style: italic;
+      color: var(--bone);
+    }
+
+    .subline {
+      margin: 20px auto 0;
+      max-width: 560px;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    /* ---------- Buttons ---------- */
+    .cta-row {
+      margin-top: 40px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 30px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: #12100a;
+      box-shadow: 0 8px 30px rgba(204, 153, 51, 0.22);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(204, 153, 51, 0.34); }
+    .btn-ghost {
+      border: 1px solid rgba(230, 230, 217, 0.25);
+      color: var(--bone);
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+    .btn small { display: block; font-size: 0.6rem; letter-spacing: 0.14em; opacity: 0.75; }
+    .badge-note {
+      margin-top: 16px;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ---------- Section scaffolding ---------- */
+    section { padding: 96px 0; }
+    .section-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+    .section-head h2 {
+      margin-top: 14px;
+      font-size: clamp(1.9rem, 5vw, 2.9rem);
+      font-weight: 700;
+      color: var(--bone);
+      letter-spacing: 0.02em;
+    }
+    .section-head p { margin-top: 18px; color: var(--muted); font-size: 1.08rem; }
+
+    .divider-rule {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 22px auto 0;
+      opacity: 0.7;
+    }
+
+    /* ---------- Pitch band ---------- */
+    .pitch {
+      background:
+        linear-gradient(180deg, rgba(153,26,26,0.06), rgba(0,0,0,0)) ,
+        var(--bg);
+      border-top: 1px solid rgba(230,230,217,0.06);
+      border-bottom: 1px solid rgba(230,230,217,0.06);
+    }
+    .pitch p {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: clamp(1.3rem, 3.4vw, 1.75rem);
+      color: var(--bone);
+      line-height: 1.5;
+    }
+    .pitch .accent { color: var(--gold); font-style: italic; }
+
+    /* ---------- Feature grid ---------- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(230, 230, 217, 0.06);
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .card:hover { border-color: rgba(204, 153, 51, 0.4); transform: translateY(-3px); }
+    .card .ico { font-size: 1.7rem; margin-bottom: 16px; }
+    .card h3 {
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+    .card p { color: var(--muted); font-size: 0.98rem; }
+
+    /* ---------- Voices ---------- */
+    .voices { background: linear-gradient(180deg, rgba(0,0,0,0), rgba(153,26,26,0.05)); }
+    .voice-list { max-width: 720px; margin: 0 auto; }
+    .voice {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 4px;
+      border-bottom: 1px solid rgba(230, 230, 217, 0.08);
+    }
+    .voice:last-child { border-bottom: none; }
+    .voice .name { font-size: 1.4rem; color: var(--bone); }
+    .voice .role { color: var(--muted); font-style: italic; font-size: 1rem; }
+    .tag {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .tag-free { background: rgba(230,230,217,0.1); color: var(--bone); }
+    .tag-premium { background: rgba(204, 153, 51, 0.15); color: var(--gold); border: 1px solid rgba(204,153,51,0.4); }
+
+    /* ---------- Expansion ---------- */
+    .expansion .card-lg {
+      background: var(--card);
+      border: 1px solid rgba(204, 153, 51, 0.28);
+      border-radius: 20px;
+      padding: 48px 40px;
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .expansion h3 { font-size: 1.7rem; color: var(--gold); letter-spacing: 0.03em; }
+    .expansion .desc { color: var(--muted); margin: 16px auto 28px; max-width: 520px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .chip {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(230,230,217,0.06);
+      border: 1px solid rgba(230,230,217,0.1);
+      font-size: 0.85rem;
+      color: var(--bone);
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      border-top: 1px solid rgba(230, 230, 217, 0.08);
+      padding: 56px 0 40px;
+      text-align: center;
+    }
+    .footer-brand {
+      font-size: 1.2rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .footer-links {
+      margin-top: 22px;
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-note {
+      margin-top: 26px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .copyright { margin-top: 14px; font-size: 0.78rem; color: #55554f; }
+
+    @media (max-width: 560px) {
+      section { padding: 72px 0; }
+      .voice { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <img class="hero-art" src="assets/nightfall-hero.png" alt="Nightfall — a howling wolf before a gold crescent moon" />
+    <h1 class="wordmark">Nightfall</h1>
+    <p class="tagline">The moderator has left the table.</p>
+    <p class="subline">
+      A cinematic narrator for Werewolf. Nightfall runs the night, calls the roles,
+      and times the debate with voice and sound — so everyone gets to play.
+    </p>
+    <div class="cta-row">
+      <span class="btn btn-primary" aria-disabled="true">Coming to the App Store</span>
+      <a class="btn btn-ghost" href="#features">See how it works</a>
+    </div>
+    <p class="badge-note">iPhone · iOS 18.6+ · Free to play</p>
+  </header>
+
+  <!-- ===== PITCH ===== -->
+  <section class="pitch">
+    <div class="wrap">
+      <p>
+        Werewolf needs a moderator — and that person never gets to play.
+        Nightfall takes the chair. It <span class="accent">narrates every phase</span>,
+        wakes the wolves in the dark, and reveals the fallen at dawn.
+        You just sit down and play.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What's inside</span>
+        <h2>Built to run the night</h2>
+        <div class="divider-rule"></div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="ico">🎙️</div>
+          <h3>Voice narration</h3>
+          <p>Full voice-acted scripts guide every phase — no one has to read rules aloud or remember the order of operations.</p>
+        </div>
+        <div class="card">
+          <div class="ico">🌑</div>
+          <h3>Automated phases</h3>
+          <p>Night falls, roles wake in sequence, morning breaks. Nightfall tracks the state so the table never loses the thread.</p>
+        </div>
+        <div class="card">
+          <div class="ico">🃏</div>
+          <h3>Guided role reveal</h3>
+          <p>Pass the phone at setup for a private, one-at-a-time reveal. Everyone learns their role in secret.</p>
+        </div>
+        <div class="card">
+          <div class="ico">⏱️</div>
+          <h3>Discussion timers</h3>
+          <p>Time the debate with a lock-screen bell, so the day phase ends on cue even when your screen is dark.</p>
+        </div>
+        <div class="card">
+          <div class="ico">🔊</div>
+          <h3>Cinematic sound</h3>
+          <p>Ambient night beds, howls, tolling bells and stingers. Pair a Bluetooth speaker and the room goes quiet.</p>
+        </div>
+        <div class="card">
+          <div class="ico">📳</div>
+          <h3>Haptic feedback</h3>
+          <p>Subtle taps confirm every secret action on the pass-and-play device — feel the game without looking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VOICES ===== -->
+  <section class="voices">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Choose your narrator</span>
+        <h2>Four voices for the dark</h2>
+        <p>Start with the Chronicler, free. Unlock three more personas — each with its own character and delivery.</p>
+      </div>
+      <div class="voice-list">
+        <div class="voice">
+          <div>
+            <div class="name">Chronicler</div>
+            <div class="role">The default storyteller</div>
+          </div>
+          <span class="tag tag-free">Included</span>
+        </div>
+        <div class="voice">
+          <div>
+            <div class="name">Kincaid</div>
+            <div class="role">The Veteran Hunter</div>
+          </div>
+          <span class="tag tag-premium">Full Moon</span>
+        </div>
+        <div class="voice">
+          <div>
+            <div class="name">Madame Lenore</div>
+            <div class="role">The Medium</div>
+          </div>
+          <span class="tag tag-premium">Full Moon</span>
+        </div>
+        <div class="voice">
+          <div>
+            <div class="name">Silas</div>
+            <div class="role">The Grave Digger</div>
+          </div>
+          <span class="tag tag-premium">Full Moon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPANSION ===== -->
+  <section class="expansion">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Expansion</span>
+        <h2>Full Moon Edition</h2>
+        <div class="divider-rule"></div>
+      </div>
+      <div class="card-lg">
+        <h3>Deepen the game</h3>
+        <p class="desc">
+          Three narrator voices with unique personalities, plus three advanced roles
+          that add new layers of strategy to the table.
+        </p>
+        <div class="chips">
+          <span class="chip">🎙️ Kincaid</span>
+          <span class="chip">🎙️ Madame Lenore</span>
+          <span class="chip">🎙️ Silas</span>
+          <span class="chip">🏹 The Hunter</span>
+          <span class="chip">🎭 The Fool</span>
+          <span class="chip">🕯️ The Sorcerer</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-brand">flux &amp; form</div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="mailto:support@fluxandform.io">Support</a>
+        <a href="https://www.fluxandform.io">Website</a>
+      </div>
+      <p class="footer-note">No werewolves were harmed in the making of this app.</p>
+      <p class="copyright">© 2026 flux &amp; form. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

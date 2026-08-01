@@ -3,9 +3,13 @@ import AppLayout from '../layouts/AppLayout.astro';
 import { apps, statusBadge, appCta, type App } from '../lib/apps';
 
 // One detail page per app entry, from the data file (BRIEF §2/§6/§8).
-// Stable URLs: /inkling, /greenroom, /nightfall, /vibedeck.
+// Apps that ship their own hand-built page (public/<slug>/) are skipped here so
+// this template doesn't collide with that file — the landing still links to
+// /<slug>, which serves the app's own site.
 export function getStaticPaths() {
-  return apps.map((app) => ({ params: { slug: app.slug }, props: { app } }));
+  return apps
+    .filter((app) => !app.hasSite)
+    .map((app) => ({ params: { slug: app.slug }, props: { app } }));
 }
 
 interface Props {
