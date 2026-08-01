@@ -34,6 +34,7 @@
     "status": "building",
     "accent": "#7F00FF",
     "appStoreUrl": null,
-    "testFlightUrl": null
+    "testFlightUrl": null,
+    "hasSite": true
   }
 ]
