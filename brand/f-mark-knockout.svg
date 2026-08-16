@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Flux &amp; Form">
+  <!-- Reverse compact mark (single geometric F) for dark / ink backgrounds. -->
+  <g fill="#f3efe6">
+    <rect x="11" y="7" width="4.2" height="18"/>
+    <rect x="11" y="7" width="11" height="4.2"/>
+    <rect x="11" y="14.3" width="8.2" height="3.8"/>
+  </g>
+</svg>

@@ -1,8 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Flux &amp; Form">
-  <!-- Warm paper tile + a single ink "F" built from rects: deterministic at any
-       size, no font dependency, and true to the type-and-rules identity.
-       (Original geometric F — kept per preference over the refined mark F.) -->
-  <rect width="32" height="32" fill="#f3efe6"/>
+  <!-- Compact mark — the single geometric F (matches the site favicon).
+       For square / small slots where F/F would crowd. Ink on transparent. -->
   <g fill="#201e1a">
     <rect x="11" y="7" width="4.2" height="18"/>
     <rect x="11" y="7" width="11" height="4.2"/>
