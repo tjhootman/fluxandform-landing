@@ -49,18 +49,33 @@ Regenerate the PNGs after any SVG change: `node scripts/build-icons.mjs`.
 
 ## Wordmark
 
-The wordmark is **live type, not a vector** — it renders in the system sans stack
-(SF on Apple), so it is never distributed as a font/outline. It lives in
-`src/components/Header.astro`. Spec:
+On the **site**, the wordmark is live type — it renders in the system sans stack
+(SF on Apple) from `src/components/Header.astro`, and is never shipped as a
+font/outline. Header spec:
 
 - **Family:** `--font-sans` (system stack)
-- **Weight:** 600
-- **Case / tracking:** uppercase, `letter-spacing: 0.16em`
+- **Weight:** 600 · **case/tracking:** uppercase, `letter-spacing: 0.16em`
 - **Ampersand:** dropped to weight **300** (the one flourish)
 - **Size (header):** `0.95rem`
 
-Set as `FLUX & FORM`. Do not substitute a webfont or outline it into an image —
-if a fixed wordmark asset is ever needed, choose a licensable/OFL face first.
+### Distributable wordmark (letterhead, documents, anything off the site)
+
+System sans can't be exported as a logo — it's not one font, and SF specifically
+may not be outlined into a mark. So the fixed wordmark asset is traced from
+**Inter** (SIL OFL), set the same way (letters 600, ampersand 300, 0.16em) and
+converted to outlined paths — no font dependency. Inter sits close to SF, so it
+reads like the live header.
+
+| File | Use |
+|------|-----|
+| `wordmark.svg` (+ `-knockout`) | Wordmark, ink / reverse. |
+| `lockup-horizontal.svg` (+ `-knockout`) | `F` mark │ wordmark, one line (hairline divider so the mark's F doesn't read as part of FLUX). |
+| `lockup-stacked.svg` (+ `-knockout`) | `F` mark centred over the wordmark. |
+| `wordmark-2400.png`, `lockup-horizontal-2400.png`, `lockup-stacked-1400.png` | Transparent PNGs for Word / Pages / email. |
+
+Regenerate the SVGs (needs Inter woff2 — see the header of
+`scripts/build-wordmark.py`): `python3 scripts/build-wordmark.py <font_dir> brand`.
+Then rebuild the PNGs: `node scripts/build-icons.mjs`.
 
 ## Clear space & minimum size
 
