@@ -32,6 +32,10 @@ const doc = (w, h, viewBox, inner) =>
 const png = (w, h, viewBox, inner, out) =>
   sharp(Buffer.from(doc(w, h, viewBox, inner))).png().toFile(out).then(() => console.log('  ' + out));
 
+// Rasterize a self-contained brand SVG (wordmark / lockups) to a transparent PNG.
+const raster = (src, width, out) =>
+  sharp(src, { density: 600 }).resize({ width }).png().toFile(out).then(() => console.log('  ' + out));
+
 const jobs = [
   // Site icons
   png(48,   48,   '0 0 32 32', singleFInner, 'public/favicon.png'),
@@ -41,6 +45,10 @@ const jobs = [
   png(512,  512,  '0 0 32 32', singleFInner, 'brand/app-icon-512.png'),
   // Brand kit — horizontal F/F mark (transparent)
   png(1100, 600,  '0 0 110 60', ffInner, 'brand/ff-mark-1100.png'),
+  // Wordmark + lockups, rasterized from the outlined SVGs (transparent, ink)
+  raster('brand/wordmark.svg',           2400, 'brand/wordmark-2400.png'),
+  raster('brand/lockup-horizontal.svg',  2400, 'brand/lockup-horizontal-2400.png'),
+  raster('brand/lockup-stacked.svg',     1400, 'brand/lockup-stacked-1400.png'),
 ];
 
 await Promise.all(jobs);
