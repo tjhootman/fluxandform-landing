@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 60" role="img" aria-label="Flux / Form">
+  <!-- Reverse: paper-coloured mark for placing on dark / ink backgrounds.
+       Transparent background — set the dark field behind it. -->
+  <g fill="#f3efe6">
+    <rect x="6" y="6" width="7" height="48"/>
+    <rect x="6" y="6" width="32" height="7"/>
+    <rect x="6" y="28" width="29" height="7"/>
+    <rect x="72" y="6" width="7" height="48"/>
+    <rect x="72" y="6" width="32" height="7"/>
+    <rect x="72" y="28" width="29" height="7"/>
+  </g>
+  <path d="M48 54 L62 6" fill="none" stroke="#f3efe6" stroke-width="4.2"/>
+</svg>
