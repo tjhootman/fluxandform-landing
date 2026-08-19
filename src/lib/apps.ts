@@ -22,6 +22,12 @@ export interface App {
    * to /<slug>. Defaults to false (uses the neutral studio template).
    */
   hasSite?: boolean;
+  /**
+   * The app lives on its own domain (served from its own repo), so the landing
+   * card links straight out to it and this site hosts no /<slug> page for it.
+   * Takes precedence over `hasSite`.
+   */
+  siteUrl?: string;
 }
 
 /** A resolved call-to-action for a card / detail page, or null when the status has none. */
@@ -69,6 +75,15 @@ export const apps: App[] = appsData as App[];
 
 /** Count for the derived section label (e.g. BUILDING / 04). Never hardcode this. */
 export const appCount = apps.length;
+
+/**
+ * Where an app's card points: its own domain when it has one, otherwise the
+ * stable studio URL (/<slug>), served by the generated detail page or by a
+ * hand-built site in public/<slug>/.
+ */
+export function appHref(app: App): string {
+  return app.siteUrl ?? `/${app.slug}`;
+}
 
 export function getApp(slug: string): App | undefined {
   return apps.find((a) => a.slug === slug);

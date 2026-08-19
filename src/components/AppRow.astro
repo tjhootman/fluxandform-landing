@@ -1,6 +1,6 @@
 ---
 import type { App } from '../lib/apps';
-import { statusBadge, appCta } from '../lib/apps';
+import { statusBadge, appCta, appHref } from '../lib/apps';
 
 interface Props {
   app: App;
@@ -18,7 +18,7 @@ const cta = appCta(app);
     <!-- one small colour mark per app (BRIEF §5); its only source of colour -->
     <span class="app__chip" style={`--accent:${app.accent}`} aria-hidden="true"></span>
     <h3 class="app__name">
-      {linked ? <a href={`/${app.slug}`}>{app.name}</a> : app.name}
+      {linked ? <a href={appHref(app)}>{app.name}</a> : app.name}
     </h3>
     <span class="mono label app__badge">{badge}</span>
   </div>

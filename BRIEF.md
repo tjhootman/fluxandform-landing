@@ -202,7 +202,14 @@ Build the template so that per-page style overrides are straightforward later. D
 attempt those treatments now.
 
 These pages will eventually serve as App Store support and privacy destinations, so their
-URLs must be stable: `/inkling`, `/greenroom`, `/nightfall`, `/vibedeck`.
+URLs must be stable: `/inkling`, `/greenroom`, `/nightfall`.
+
+**VibeDeck is the exception.** It outgrew this repo and now lives at
+[vibedeck.live](https://vibedeck.live), served from its own repository, where it keeps its
+own support and privacy pages. Its landing card links straight out to that domain via the
+`siteUrl` field in `src/data/apps.json`; this site hosts no `/vibedeck` page at all. Any
+app that moves to its own domain follows the same path — set `siteUrl` and delete whatever
+this repo was serving for it.
 
 ---
 
